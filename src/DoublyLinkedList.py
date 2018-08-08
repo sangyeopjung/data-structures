@@ -101,19 +101,25 @@ class DoublyLinkedList(object):
         if index > self.length:
             raise IndexError('Index out of range')
         
-        if not index:
+        if not index and 0 == self.length:
+            self.head = Node(value, None, None)
+            self.tail = self.head
+            self.length += 1
+            return
+
+        elif not index:
             self.head = Node(value, None, self.head)
             self.head.getNext().setPrev(self.head)
             self.length += 1
             return
         
-        if index == self.length:
+        elif index == self.length:
             self.tail = Node(value, self.tail, None)
             self.tail.getPrev().setNext(self.tail)
             self.length += 1
             return
             
-        if index < self.length/2:
+        elif index < self.length/2:
             curr = self.head
             for _ in range(index-1):
                 curr = curr.getNext()
@@ -121,6 +127,7 @@ class DoublyLinkedList(object):
             curr = curr.getNext()
             curr.getNext().setPrev(curr)
             self.length += 1
+            
         else:
             curr = self.tail
             for _ in range(self.length-index-1):
