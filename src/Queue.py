@@ -25,6 +25,10 @@ class Queue(object):
     
     def peek(self):
         return self.queue.get(self.queue.getLength()-1)
+    
+    
+    def getLength(self):
+        return self.queue.getLength()
 
 
 # In[10]:
