@@ -107,40 +107,69 @@ def _partition(array, low, high):
     return i
 
 
+def binarySearch(array, value):
+    low = 0
+    high = len(array)-1
+    
+    while low <= high:
+        mid = (low + high)//2
+        if value < array[mid]:
+            high = mid-1
+        elif value > array[mid]:
+            low = mid+1
+        else:
+            return mid
+    
+    return -1
+
+
 # In[2]:
 
 
 import random
-array = [i for i in range(10000)]
+array = [i for i in range(100)]
 random.shuffle(array)
+sortedArray = sorted(array)
 
 
 # In[3]:
 
 
-bubbleSort(array[:])[0]
+result = bubbleSort(array[:])
+result[0], result[1]==sortedArray
 
 
 # In[4]:
 
 
-insertionSort(array[:])[0]
+result = insertionSort(array[:])
+result[0], result[1]==sortedArray
 
 
 # In[5]:
 
 
-selectionSort(array[:])[0]
+result = selectionSort(array[:])
+result[0], result[1]==sortedArray
 
 
 # In[6]:
 
 
-mergeSort(array[:])[0]
+result = mergeSort(array[:])
+result[0], result[1]==sortedArray
 
 
 # In[7]:
 
 
-quickSort(array[:])[0]
+result = quickSort(array[:])
+result[0], result[1]==sortedArray
+
+
+# In[8]:
+
+
+rand = random.randint(1, 100)
+rand, binarySearch(sortedArray, rand)
 
